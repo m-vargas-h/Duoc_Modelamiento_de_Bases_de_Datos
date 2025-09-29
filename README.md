@@ -25,7 +25,6 @@ Durante la segunda experiencia de aprendizaje los y las estudiantes aplicarán n
 |----------|------------|----------------------------------------------|
 | Semana 4 | 08/09/2025 | Modelando y Normalizando datos
 | Semana 5 | 15/09/2025 | Representando el MER y sus claves primarias
-| Semana 6 | 22/09/2025 | Generando claves primarias y foráneas en el Diseño físico
 
 ### 📂 Experiencia 3: Consultando y poblando bases de datos
 Durante la ultima experiencia de aprendizaje los y las estudiantes construirán sentencias SQL de creación de tablas, columnas y constraints, e inserción de datos usando secuencias. Esta experiencia responde al resultado de aprendizaje 3:
@@ -33,6 +32,7 @@ Durante la ultima experiencia de aprendizaje los y las estudiantes construirán 
 
 | Semana   | Entrega    | Descripción                                  |
 |----------|------------|----------------------------------------------|
+| Semana 6 | 22/09/2025 | Generando claves primarias y foráneas en el Diseño físico
 | Semana 7 | 29/09/2025 | Construyendo y poblando un modelo relacional con sentencias SQL
 | Semana 8 | 06/10/2025 | Realizando el poblamiento y consultas den la base de datos con sentencias SQL
 
