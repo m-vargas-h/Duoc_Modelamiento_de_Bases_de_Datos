@@ -135,67 +135,67 @@ CREATE TABLE DETALLE_VENTA (
     CONSTRAINT pk_detalleventa PRIMARY KEY (cod_venta)
 );
 
--- COMUNA → REGION
+-- COMUNA -> REGION
 ALTER TABLE COMUNA
 ADD CONSTRAINT fk_comuna_region FOREIGN KEY (cod_region)
 REFERENCES REGION(id_region);
 
--- EMPLEADO → SALUD
+-- EMPLEADO -> SALUD
 ALTER TABLE EMPLEADO
 ADD CONSTRAINT fk_empleado_salud FOREIGN KEY (cod_salud)
 REFERENCES SALUD(id_salud);
 
--- EMPLEADO → AFP
+-- EMPLEADO -> AFP
 ALTER TABLE EMPLEADO
 ADD CONSTRAINT fk_empleado_afp FOREIGN KEY (cod_afp)
 REFERENCES AFP(id_afp);
 
--- PROVEEDOR → COMUNA
+-- PROVEEDOR -> COMUNA
 ALTER TABLE PROVEEDOR
 ADD CONSTRAINT fk_proveedor_comuna FOREIGN KEY (cod_comuna)
 REFERENCES COMUNA(id_comuna);
 
--- PRODUCTO → MARCA
+-- PRODUCTO -> MARCA
 ALTER TABLE PRODUCTO
 ADD CONSTRAINT fk_producto_marca FOREIGN KEY (cod_marca)
 REFERENCES MARCA(id_marca);
 
--- PRODUCTO → CATEGORIA
+-- PRODUCTO -> CATEGORIA
 ALTER TABLE PRODUCTO
 ADD CONSTRAINT fk_producto_categoria FOREIGN KEY (cod_categoria)
 REFERENCES CATEGORIA(id_categoria);
 
--- PRODUCTO → PROVEEDOR
+-- PRODUCTO -> PROVEEDOR
 ALTER TABLE PRODUCTO
 ADD CONSTRAINT fk_producto_proveedor FOREIGN KEY (cod_proveedor)
 REFERENCES PROVEEDOR(id_proveedor);
 
--- VENTA → MEDIO_PAGO
+-- VENTA -> MEDIO_PAGO
 ALTER TABLE VENTA
 ADD CONSTRAINT fk_venta_mediopago FOREIGN KEY (cod_mpago)
 REFERENCES MEDIO_PAGO(id_mpago);
 
--- VENTA → EMPLEADO
+-- VENTA -> EMPLEADO
 ALTER TABLE VENTA
 ADD CONSTRAINT fk_venta_empleado FOREIGN KEY (cod_empleado)
 REFERENCES EMPLEADO(id_empleado);
 
--- DETALLE_VENTA → VENTA
+-- DETALLE_VENTA -> VENTA
 ALTER TABLE DETALLE_VENTA
 ADD CONSTRAINT fk_detalle_venta FOREIGN KEY (cod_venta)
 REFERENCES VENTA(id_venta);
 
--- DETALLE_VENTA → PRODUCTO
+-- DETALLE_VENTA -> PRODUCTO
 ALTER TABLE DETALLE_VENTA
 ADD CONSTRAINT fk_detalle_producto FOREIGN KEY (cod_producto)
 REFERENCES PRODUCTO(id_producto);
 
--- ADMINISTRATIVO → EMPLEADO
+-- ADMINISTRATIVO -> EMPLEADO
 ALTER TABLE ADMINISTRATIVO
 ADD CONSTRAINT fk_administrativo_empleado FOREIGN KEY (id_empleado)
 REFERENCES EMPLEADO(id_empleado);
 
--- VENDEDOR → EMPLEADO
+-- VENDEDOR -> EMPLEADO
 ALTER TABLE VENDEDOR
 ADD CONSTRAINT fk_vendedor_empleado FOREIGN KEY (id_empleado)
 REFERENCES EMPLEADO(id_empleado);
@@ -236,6 +236,42 @@ CHECK (cantidad >= 1);
 /*
 CASO 3: POBLAMIENTO DEL MODELO
 */
+-- Secuencia para SALUD
+CREATE SEQUENCE seq_salud_id
+START WITH 2050
+INCREMENT BY 10
+NOCACHE
+NOCYCLE;
+
+--POBLAMIENTO TABLA AFP
+INSERT INTO AFP (nom_afp) VALUES ('AFP Habitat');
+INSERT INTO AFP (nom_afp) VALUES ('AFP Cuprum');
+INSERT INTO AFP (nom_afp) VALUES ('AFP Provida');
+INSERT INTO AFP (nom_afp) VALUES ('AFP PlanVital');
+
+-- POBLAMIENTO TABLA SALUD
+INSERT INTO SALUD (id_salud, nom_salud)
+VALUES (seq_salud_id.NEXTVAL, 'Fonasa');
+
+INSERT INTO SALUD (id_salud, nom_salud)
+VALUES (seq_salud_id.NEXTVAL, 'Isapre Colmena');
+
+INSERT INTO SALUD (id_salud, nom_salud)
+VALUES (seq_salud_id.NEXTVAL, 'Isapre Banmédica');
+
+INSERT INTO SALUD (id_salud, nom_salud)
+VALUES (seq_salud_id.NEXTVAL, 'Isapre Cruz Blanca');
+
+-- POBLAMIENTO MEDIO_PAGO
+INSERT INTO MEDIO_PAGO (id_mpago, nombre_mpago) VALUES (11, 'Efectivo');
+INSERT INTO MEDIO_PAGO (id_mpago, nombre_mpago) VALUES (12, 'Tarjeta Débito');
+INSERT INTO MEDIO_PAGO (id_mpago, nombre_mpago) VALUES (13, 'Tarjeta Crédito');
+INSERT INTO MEDIO_PAGO (id_mpago, nombre_mpago) VALUES (14, 'Cheque');
+
+
+-- Agrega más según tus datos
+
+
 
 /*
 CASO 4: RECUPERACION DE DATOS
