@@ -16,6 +16,9 @@ DROP TABLE MEDIO_PAGO CASCADE CONSTRAINTS;
 DROP TABLE VENTA CASCADE CONSTRAINTS;
 DROP TABLE DETALLE_VENTA CASCADE CONSTRAINTS;
 
+DROP SEQUENCE seq_salud_id;
+DROP SEQUENCE seq_empleado_id;
+
 /*
 CASO 1: IMPLEMENTACION DEL MODELO
 */
@@ -243,6 +246,13 @@ INCREMENT BY 10
 NOCACHE
 NOCYCLE;
 
+-- Secuencia para EMPLEADO
+CREATE SEQUENCE seq_empleado_id
+START WITH 750
+INCREMENT BY 3
+NOCACHE
+NOCYCLE;
+
 --POBLAMIENTO TABLA AFP
 INSERT INTO AFP (nom_afp) VALUES ('AFP Habitat');
 INSERT INTO AFP (nom_afp) VALUES ('AFP Cuprum');
@@ -268,10 +278,121 @@ INSERT INTO MEDIO_PAGO (id_mpago, nombre_mpago) VALUES (12, 'Tarjeta Débito');
 INSERT INTO MEDIO_PAGO (id_mpago, nombre_mpago) VALUES (13, 'Tarjeta Crédito');
 INSERT INTO MEDIO_PAGO (id_mpago, nombre_mpago) VALUES (14, 'Cheque');
 
+--POBLAMIENTO TABLA REGION
+INSERT INTO REGION (id_region, nom_region) VALUES (1, 'Región Metropolitana');
+INSERT INTO REGION (id_region, nom_region) VALUES (2, 'Valparaiso');
+INSERT INTO REGION (id_region, nom_region) VALUES (3, 'Biobio');
+INSERT INTO REGION (id_region, nom_region) VALUES (4, 'Los Lagos');
 
--- Agrega más según tus datos
+-- POBLAMIENTO TABLA EMPLEADO
+INSERT INTO EMPLEADO (
+    id_empleado, rut_empleado, nombre_empleado, apellido_paterno, apellido_materno, fecha_contratacion, 
+    sueldo_base, bono_jefatura, activo, tipo_empleado, cod_empleado, cod_salud, cod_afp
+)
+VALUES (
+    seq_empleado_id.NEXTVAL, '11111111-1', 'Marcela', 'González', 'Pérez',
+    TO_DATE('15-03-2022', 'DD-MM-YYYY'), 950000, 80000, 'S', 'Administrativo',
+    NULL, 2050, 210
+);
 
+INSERT INTO EMPLEADO (
+    id_empleado, rut_empleado, nombre_empleado, apellido_paterno, apellido_materno, fecha_contratacion, 
+    sueldo_base, bono_jefatura, activo, tipo_empleado, cod_empleado, cod_salud, cod_afp
+)
+VALUES (
+    seq_empleado_id.NEXTVAL, '22222222-2', 'José', 'Muñoz', 'Ramírez',
+    TO_DATE('10-07-2021', 'DD-MM-YYYY'), 900000, 75000, 'S', 'Administrativo',
+    NULL, 2060, 216
+);
 
+INSERT INTO EMPLEADO (
+    id_empleado, rut_empleado, nombre_empleado, apellido_paterno, apellido_materno, fecha_contratacion, 
+    sueldo_base, bono_jefatura, activo, tipo_empleado, cod_empleado, cod_salud, cod_afp
+)
+VALUES (
+    seq_empleado_id.NEXTVAL, '33333333-3', 'Verónica', 'Soto', 'Alarcón',
+    TO_DATE('05-01-2020', 'DD-MM-YYYY'), 880000, 70000, 'S', 'Vendedor',
+    750, 2060, 228
+);
+
+INSERT INTO EMPLEADO (
+    id_empleado, rut_empleado, nombre_empleado, apellido_paterno, apellido_materno, fecha_contratacion, 
+    sueldo_base, bono_jefatura, activo, tipo_empleado, cod_empleado, cod_salud, cod_afp
+)
+VALUES (
+    seq_empleado_id.NEXTVAL, '44444444-4', 'Luis', 'Reyes', 'Fuentes', TO_DATE('01-04-2023', 'DD-MM-YYYY'), 
+    560000, NULL, 'S', 'Vendedor', 750, 2070, 228
+);
+
+INSERT INTO EMPLEADO (
+    id_empleado, rut_empleado, nombre_empleado, apellido_paterno, apellido_materno, fecha_contratacion, 
+    sueldo_base, bono_jefatura, activo, tipo_empleado, cod_empleado, cod_salud, cod_afp
+)
+VALUES (
+    seq_empleado_id.NEXTVAL, '55555555-5', 'Claudia', 'Fernández', 'Lagos', TO_DATE('15-04-2023', 'DD-MM-YYYY'), 
+    600000, NULL, 'S', 'Vendedor', 753, 2070, 216
+);
+
+INSERT INTO EMPLEADO (
+    id_empleado, rut_empleado, nombre_empleado, apellido_paterno, apellido_materno, fecha_contratacion, 
+    sueldo_base, bono_jefatura, activo, tipo_empleado, cod_empleado, cod_salud, cod_afp
+)
+VALUES (
+    seq_empleado_id.NEXTVAL, '66666666-6', 'Carlos', 'Navarro', 'Vega', TO_DATE('01-05-2023', 'DD-MM-YYYY'), 
+    610000, NULL, 'S', 'Administrativo', 753, 2060, 210
+);
+
+INSERT INTO EMPLEADO (
+    id_empleado, rut_empleado, nombre_empleado, apellido_paterno, apellido_materno, fecha_contratacion, 
+    sueldo_base, bono_jefatura, activo, tipo_empleado, cod_empleado, cod_salud, cod_afp
+)
+VALUES (
+    seq_empleado_id.NEXTVAL, '77777777-7', 'Javiera', 'Pino', 'Rojas', TO_DATE('10-05-2023', 'DD-MM-YYYY'), 
+    650000, NULL, 'S', 'Administrativo', 750, 2050, 210
+);
+
+INSERT INTO EMPLEADO (
+    id_empleado, rut_empleado, nombre_empleado, apellido_paterno, apellido_materno, fecha_contratacion, 
+    sueldo_base, bono_jefatura, activo, tipo_empleado, cod_empleado, cod_salud, cod_afp
+)
+VALUES (
+    seq_empleado_id.NEXTVAL, '88888888-8', 'Diego', 'Mella', 'Contreras', TO_DATE('12-05-2023', 'DD-MM-YYYY'),
+    620000, NULL, 'S', 'Vendedor', 750, 2060, 216
+);
+
+INSERT INTO EMPLEADO (
+    id_empleado, rut_empleado, nombre_empleado, apellido_paterno, apellido_materno, fecha_contratacion, 
+    sueldo_base, bono_jefatura, activo, tipo_empleado, cod_empleado, cod_salud, cod_afp
+)
+VALUES (
+    seq_empleado_id.NEXTVAL, '99999999-9', 'Fernanda', 'Salas', 'Herrera', TO_DATE('18-05-2023', 'DD-MM-YYYY'), 
+    570000, NULL, 'S', 'Vendedor', 753, 2070, 228
+);
+
+INSERT INTO EMPLEADO (
+    id_empleado, rut_empleado, nombre_empleado, apellido_paterno, apellido_materno, fecha_contratacion, 
+    sueldo_base, bono_jefatura, activo, tipo_empleado, cod_empleado, cod_salud, cod_afp
+)
+VALUES (
+    seq_empleado_id.NEXTVAL, '10101010-0', 'Tomás', 'Videal', 'Espinoza', TO_DATE('01-06-2023', 'DD-MM-YYYY'), 
+    530000, NULL, 'S', 'Vendedor', NULL, 2050, 222
+);
+
+-- POBLAMIENTO TABLA VENTA
+INSERT INTO VENTA (fecha_venta, total_venta, cod_mpago, cod_empleado)
+VALUES (
+    TO_DATE('12-05-2023', 'DD-MM-YYYY'), 225990, 12, 771
+);
+
+INSERT INTO VENTA (fecha_venta, total_venta, cod_mpago, cod_empleado)
+VALUES (
+    TO_DATE('23-10-2023', 'DD-MM-YYYY'), 524990, 13, 777
+);
+
+INSERT INTO VENTA (fecha_venta, total_venta, cod_mpago, cod_empleado)
+VALUES (
+    TO_DATE('17-02-2023', 'DD-MM-YYYY'), 466990, 11, 759
+);
 
 /*
 CASO 4: RECUPERACION DE DATOS
