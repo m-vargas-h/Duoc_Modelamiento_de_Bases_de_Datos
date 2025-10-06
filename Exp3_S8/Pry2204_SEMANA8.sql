@@ -395,19 +395,13 @@ VALUES (
 
 -- POBLAMIENTO TABLA VENTA
 INSERT INTO VENTA (fecha_venta, total_venta, cod_mpago, cod_empleado)
-VALUES (
-    TO_DATE('12-05-2023', 'DD-MM-YYYY'), 225990, 12, 771
-);
+VALUES (TO_DATE('12-05-2023', 'DD-MM-YYYY'), 225990, 12, 771);
 
 INSERT INTO VENTA (fecha_venta, total_venta, cod_mpago, cod_empleado)
-VALUES (
-    TO_DATE('23-10-2023', 'DD-MM-YYYY'), 524990, 13, 777
-);
+VALUES (TO_DATE('23-10-2023', 'DD-MM-YYYY'), 524990, 13, 777);
 
 INSERT INTO VENTA (fecha_venta, total_venta, cod_mpago, cod_empleado)
-VALUES (
-    TO_DATE('17-02-2023', 'DD-MM-YYYY'), 466990, 11, 759
-);
+VALUES (TO_DATE('17-02-2023', 'DD-MM-YYYY'), 466990, 11, 759);
 
 /*============================================================
   CASO 4: RECUPERACION DE DATOS
@@ -417,9 +411,9 @@ VALUES (
 SELECT
     id_empleado AS "IDENTIFICADOR",
     nombre_empleado || ' ' || apellido_paterno || ' ' || apellido_materno AS "NOMBRE COMPLETO",
-    sueldo_base AS "SALARIO",
+    sueldo_base AS "SUELDO",
     bono_jefatura AS "BONIFICACION",
-    sueldo_base + bono_jefatura AS "SALARIO SIMULADO"
+    sueldo_base + bono_jefatura AS "SUELDO SIMULADO"
 FROM EMPLEADO
 WHERE activo = 'S' AND bono_jefatura IS NOT NULL
 ORDER BY
